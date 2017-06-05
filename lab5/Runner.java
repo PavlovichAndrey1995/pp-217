@@ -1,9 +1,16 @@
 package lab5;
 
 public class Runner {
+  private static final int count = 2000000;
 
-    public static void main (String[] args) {
-        MultiHandler multiHandler = new MultiHandler ();
-        multiHandler.startThreads ();
+  private Runner() {}
+
+  public static void main(String[] args) {
+    try {
+      double pi = LazyThreadCalculator.calculate(count);
+      System.out.println("pi=" + Double.toString(pi));
+    } catch (InterruptedException e) {
+      System.err.println("Interrupted.");
     }
+  }
 }
